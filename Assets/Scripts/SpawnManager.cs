@@ -5,11 +5,12 @@ using UnityEngine;
 public class SpawnManager : MonoBehaviour
 {
     [SerializeField] private GameObject obstaclePrefab;
+    [SerializeField] private GameObject[] obstacles;
 
     private PlayerController playerControllerScript;
     private Vector3 spawnPosition = new Vector3(25, 1, 0);
     private float startDelay = 2f;
-    private float repeatRate = 2f;
+    private float repeatRate = 3f;
 
     private void Start()
     {
@@ -21,7 +22,8 @@ public class SpawnManager : MonoBehaviour
     {
         if(playerControllerScript.GetGameOver() == false)
         {
-            Instantiate(obstaclePrefab, spawnPosition, obstaclePrefab.transform.rotation);
+            int index = Random.Range(0, obstacles.Length);
+            Instantiate(obstacles[index], spawnPosition, obstaclePrefab.transform.rotation);
         }
     }
 }

@@ -11,7 +11,8 @@ public class MoveLeft : MonoBehaviour
 
     private void Start()
     {
-        playerControllerScript = GameObject.Find("Player").GetComponent<PlayerController>();
+        //playerControllerScript = GameObject.Find("Player").GetComponent<PlayerController>();
+        playerControllerScript = FindObjectOfType<PlayerController>();
     }
 
     private void Update()
@@ -25,5 +26,10 @@ public class MoveLeft : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    public float GetSpeed()
+    {
+        return speed;
     }
 }
